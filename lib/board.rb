@@ -1,3 +1,5 @@
+# board
+
 class Board
   attr_reader :grid
 
@@ -6,7 +8,7 @@ class Board
   end
 
   def self.convert_coordinates_to_indices(letter, number)
-    row = letter.upcase.ord - 65
+    row = letter.ord - 65
     column = number - 1
 
     [row, column]
