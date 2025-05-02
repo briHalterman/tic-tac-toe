@@ -11,4 +11,8 @@ class Board
 
     [row, column]
   end
+
+  def place_game_piece(game_piece, row, column)
+    @grid[row][column] = game_piece
+  end
 end
