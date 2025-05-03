@@ -11,6 +11,7 @@ class Game
     puts 'Take turns playing spaces.'
     puts 'Three in a row wins!'
     puts 'Type "Good Game" to concede to your opponent.'
+    puts 'Type "Exit" at any point to exit the game'
     puts 'Player 1 starts. Let\'s go!'
     puts
   end
@@ -43,25 +44,35 @@ class Game
     puts "#{@current_player.name}, choose a row:"
     row_input = gets.chomp.upcase
 
-    if row_input == 'GOOD GAME'
-      congratulate_winner
-    end
-
-    until ['A', 'B', 'C'].include?(row_input)
+    until ['A', 'B', 'C', 'GOOD GAME', 'EXIT'].include?(row_input)
       puts "#{@current_player.name}, choose a valid row:"
       row_input = gets.chomp.upcase
     end
 
+    if row_input == 'GOOD GAME'
+      congratulate_winner
+    end
+
+    if row_input == 'EXIT'
+      puts "Thanks for playing!"
+      exit
+    end
+
     puts "#{@current_player.name}, choose a column:"
-    column_input = gets.chomp
+    column_input = gets.chomp.upcase
+
+    until ['1', '2', '3', 'GOOD GAME', 'EXIT'].include?(column_input)
+      puts "#{@current_player.name}, choose a valid column:"
+      column_input = gets.chomp.upcase
+    end
 
     if column_input == 'GOOD GAME'
       congratulate_winner
     end
 
-    until ['1', '2', '3'].include?(column_input)
-      puts "#{@current_player.name}, choose a valid column:"
-      column_input = gets.chomp
+    if column_input == 'EXIT'
+      puts "Thanks for playing!"
+      exit
     end
 
     row, column = Board.convert_coordinates_to_indices(row_input, column_input)
