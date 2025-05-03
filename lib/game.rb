@@ -5,4 +5,25 @@ class Game
     @player2 = Player.new("Player 2", "O")
     @current_player = @player1
   end
+
+  def play_round
+    puts @board.display_board
+
+    puts "#{@current_player.name}, choose a row:"
+    row = gets.chomp.upcase
+
+    puts "#{@current_player.name}, choose a column:"
+    column = gets.chomp.to_i
+
+    row, column = Board.convert_coordinates_to_indices(row, column)
+    @board.place_game_piece(@current_player.game_piece, row, column)
+
+    @current_player = @current_player == @player1 ? @player2 : @player1
+  end
+
+  def play_game
+    9.times do
+      play_round
+    end
+  end
 end
