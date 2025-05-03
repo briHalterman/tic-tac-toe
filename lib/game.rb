@@ -57,7 +57,9 @@ class Game
     row, column = Board.convert_coordinates_to_indices(row_input, column_input)
     @board.place_game_piece(@current_player.game_piece, row, column)
 
-    switch_player
+    if @board.grid[row][column] == @current_player.game_piece
+      switch_player
+    end
   end
 
   def play_game

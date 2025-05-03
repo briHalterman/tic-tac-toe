@@ -22,6 +22,11 @@ class Board
   end
 
   def place_game_piece(game_piece, row, column)
-    @grid[row][column] = game_piece
+    if @grid[row][column] == " "
+      @grid[row][column] = game_piece
+    else
+      puts "Please choose a space that is not already taken."
+      @play_round
+    end
   end
 end
