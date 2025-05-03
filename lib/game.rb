@@ -15,6 +15,10 @@ class Game
     puts
   end
 
+  def switch_player
+    @current_player = @current_player == @player1 ? @player2 : @player1
+  end
+
   def reset_game
     puts "Would you like to play again? Y/N"
     response = gets.chomp.upcase
@@ -27,19 +31,33 @@ class Game
     end
   end
 
+  def congratulate_winner
+    switch_player
+    puts "Congratulations, #{@current_player.name}!"
+    reset_game
+  end
+
   def play_round
     puts @board.display_board
 
     puts "#{@current_player.name}, choose a row:"
-    row = gets.chomp.upcase
+    row_input = gets.chomp.upcase
+
+    if row_input == 'GOOD GAME'
+      congratulate_winner
+    end
 
     puts "#{@current_player.name}, choose a column:"
-    column = gets.chomp.to_i
+    column_input = gets.chomp
 
-    row, column = Board.convert_coordinates_to_indices(row, column)
+    if column_input == 'GOOD GAME'
+      congratulate_winner
+    end
+
+    row, column = Board.convert_coordinates_to_indices(row_input, column_input)
     @board.place_game_piece(@current_player.game_piece, row, column)
 
-    @current_player = @current_player == @player1 ? @player2 : @player1
+    switch_player
   end
 
   def play_game
