@@ -6,6 +6,15 @@ class Game
     @current_player = @player1
   end
 
+  def show_instructions
+    puts 'Tic-Tac-Toe'
+    puts 'Take turns playing spaces.'
+    puts 'Three in a row wins!'
+    puts 'Type "Good Game" to concede to your opponent.'
+    puts 'Player 1 starts. Let\'s go!'
+    puts
+  end
+
   def play_round
     puts @board.display_board
 
@@ -22,6 +31,7 @@ class Game
   end
 
   def play_game
+    show_instructions
     9.times do
       play_round
     end
