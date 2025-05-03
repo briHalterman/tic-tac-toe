@@ -47,9 +47,8 @@ class Game
       congratulate_winner
     end
 
-    unless ['A', 'B', 'C'].include?(row_input)
-      puts 'Please choose a valid row.'
-      puts "#{@current_player.name}, choose a row:"
+    until ['A', 'B', 'C'].include?(row_input)
+      puts "#{@current_player.name}, choose a valid row:"
       row_input = gets.chomp.upcase
     end
 
@@ -60,9 +59,8 @@ class Game
       congratulate_winner
     end
 
-    unless ['1', '2', '3'].include?(column_input)
-      puts 'Please choose a valid column.'
-      puts "#{@current_player.name}, choose a column:"
+    until ['1', '2', '3'].include?(column_input)
+      puts "#{@current_player.name}, choose a valid column:"
       column_input = gets.chomp
     end
 
