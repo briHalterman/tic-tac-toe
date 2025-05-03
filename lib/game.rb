@@ -47,11 +47,23 @@ class Game
       congratulate_winner
     end
 
+    unless ['A', 'B', 'C'].include?(row_input)
+      puts 'Please choose a valid row.'
+      puts "#{@current_player.name}, choose a row:"
+      row_input = gets.chomp.upcase
+    end
+
     puts "#{@current_player.name}, choose a column:"
     column_input = gets.chomp
 
     if column_input == 'GOOD GAME'
       congratulate_winner
+    end
+
+    unless ['1', '2', '3'].include?(column_input)
+      puts 'Please choose a valid column.'
+      puts "#{@current_player.name}, choose a column:"
+      column_input = gets.chomp
     end
 
     row, column = Board.convert_coordinates_to_indices(row_input, column_input)
