@@ -15,6 +15,18 @@ class Game
     puts
   end
 
+  def reset_game
+    puts "Would you like to play again? Y/N"
+    response = gets.chomp.upcase
+
+    if response == "Y"
+      Game.new.play_game
+    else
+      puts "Thanks for playing!"
+      exit
+    end
+  end
+
   def play_round
     puts @board.display_board
 
@@ -35,5 +47,7 @@ class Game
     9.times do
       play_round
     end
+    puts 'Cat\'s Game!'
+    reset_game
   end
 end
