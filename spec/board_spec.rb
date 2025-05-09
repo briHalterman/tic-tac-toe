@@ -21,4 +21,15 @@ RSpec.describe Board do
       expect(result).to eq([1, 1])
     end
   end
+
+  describe '#place_game_piece' do
+    it 'correctly updates the board grid' do
+      board = Board.new
+      board.place_game_piece("O", 1, 1)
+
+      result = board.grid[1][1]
+
+      expect(result).to eq("O")
+    end
+  end
 end
