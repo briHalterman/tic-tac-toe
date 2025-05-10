@@ -27,4 +27,16 @@ RSpec.describe Game do
       expect(board.grid[1][1]).to eq("X")
     end
   end
+
+  describe '#switch_player' do
+    it 'switches from player1 to player2 and back' do
+      game = Game.new
+
+      expect(game.current_player.name).to eq("Player 1")
+      game.switch_player
+      expect(game.current_player.name).to eq("Player 2")
+      game.switch_player
+      expect(game.current_player.name).to eq("Player 1")
+    end
+  end
 end
