@@ -124,16 +124,31 @@ RSpec.describe Board do
     end
 
       it 'identifies a winner on a mixed board' do
-      board = Board.new
-      board.place_game_piece("X", 0, 0)
-      board.place_game_piece("O", 2, 2)
-      board.place_game_piece("X", 0, 2)
-      board.place_game_piece("O", 0, 1)
-      board.place_game_piece("X", 2, 0)
-      board.place_game_piece("O", 0, 0)
-      board.place_game_piece("X", 1, 0)
+        board = Board.new
+        board.place_game_piece("X", 0, 0)
+        board.place_game_piece("O", 2, 2)
+        board.place_game_piece("X", 0, 2)
+        board.place_game_piece("O", 0, 1)
+        board.place_game_piece("X", 2, 0)
+        board.place_game_piece("O", 0, 0)
+        board.place_game_piece("X", 1, 0)
 
-      expect(board.winner?("X")).to eq(true)
+        expect(board.winner?("X")).to eq(true)
+      end
+
+      it 'does not identify a tie as a win' do
+        board = Board.new
+        board.place_game_piece("X", 0, 0)
+        board.place_game_piece("O", 0, 1)
+        board.place_game_piece("X", 0, 2)
+        board.place_game_piece("O", 1, 0)
+        board.place_game_piece("X", 1, 2)
+        board.place_game_piece("O", 1, 1)
+        board.place_game_piece("X", 2, 0)
+        board.place_game_piece("O", 2, 2)
+        board.place_game_piece("X", 2, 1)
+
+      expect(board.winner?("X")).to eq(false)
     end
   end
 end
