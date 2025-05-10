@@ -66,6 +66,11 @@ class Board
                     grid[1][1] == game_piece &&
                     grid[2][2] == game_piece
 
+    # diagonal win
+    return true if  grid[0][2] == game_piece &&
+                    grid[1][1] == game_piece &&
+                    grid[2][0] == game_piece
+
     false
   end
 end
