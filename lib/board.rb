@@ -31,30 +31,35 @@ class Board
   end
 
   def winner?(game_piece)
-    # horizontal win in column 0
+    # horizontal win in row 0
     return true if  grid[0][0] == game_piece &&
                     grid[0][1] == game_piece &&
                     grid[0][2] == game_piece
 
-    # horizontal win in column 1
+    # horizontal win in row 1
     return true if  grid[1][0] == game_piece &&
                     grid[1][1] == game_piece &&
                     grid[1][2] == game_piece
 
-    # horizontal win in column 2
+    # horizontal win in row 2
     return true if  grid[2][0] == game_piece &&
                     grid[2][1] == game_piece &&
                     grid[2][2] == game_piece
 
-    # vertical win in row 0
+    # vertical win in column 0
     return true if  grid[0][0] == game_piece &&
                     grid[1][0] == game_piece &&
                     grid[2][0] == game_piece
 
-    # vertical win in row 0
+    # vertical win in column 1
     return true if  grid[0][1] == game_piece &&
                     grid[1][1] == game_piece &&
                     grid[2][1] == game_piece
+
+    # vertical win in column 2
+    return true if  grid[0][2] == game_piece &&
+                    grid[1][2] == game_piece &&
+                    grid[2][2] == game_piece
 
     false
   end
