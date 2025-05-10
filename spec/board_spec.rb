@@ -34,15 +34,6 @@ RSpec.describe Board do
   end
 
   describe "winner?" do
-    it 'exists and returns a boolean' do
-      board = Board.new
-      board.place_game_piece("X", 0, 0)
-      board.place_game_piece("X", 1, 0)
-      board.place_game_piece("X", 2, 0)
-
-      expect(board.winner?("X")).to eq(true)
-    end
-
     it 'does not identify a non-winner' do
       board = Board.new
       board.place_game_piece("O", 0, 0)
@@ -83,6 +74,24 @@ RSpec.describe Board do
       board.place_game_piece("X", 2, 0)
       board.place_game_piece("X", 2, 1)
       board.place_game_piece("X", 2, 2)
+
+      expect(board.winner?("X")).to eq(true)
+    end
+
+    it 'identifies a win in column 0' do
+      board = Board.new
+      board.place_game_piece("X", 0, 0)
+      board.place_game_piece("X", 1, 0)
+      board.place_game_piece("X", 2, 0)
+
+      expect(board.winner?("X")).to eq(true)
+    end
+
+    it 'identifies a win in column 1' do
+      board = Board.new
+      board.place_game_piece("X", 0, 1)
+      board.place_game_piece("X", 1, 1)
+      board.place_game_piece("X", 2, 1)
 
       expect(board.winner?("X")).to eq(true)
     end

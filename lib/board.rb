@@ -50,6 +50,12 @@ class Board
     return true if  grid[0][0] == game_piece &&
                     grid[1][0] == game_piece &&
                     grid[2][0] == game_piece
+
+    # vertical win in row 0
+    return true if  grid[0][1] == game_piece &&
+                    grid[1][1] == game_piece &&
+                    grid[2][1] == game_piece
+
     false
   end
 end
