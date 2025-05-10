@@ -44,10 +44,10 @@ class Game
     puts "#{@current_player.name}, choose a row:"
     row_input = gets.chomp.upcase
 
-    until ['A', 'B', 'C', 'GOOD GAME', 'EXIT'].include?(row_input)
-      puts "#{@current_player.name}, choose a valid row:"
-      row_input = gets.chomp.upcase
-    end
+    # until ['A', 'B', 'C', 'GOOD GAME', 'EXIT'].include?(row_input)
+    #   puts "#{@current_player.name}, choose a valid row:"
+    #   row_input = gets.chomp.upcase
+    # end
 
     if row_input == 'GOOD GAME'
       congratulate_winner
@@ -61,10 +61,10 @@ class Game
     puts "#{@current_player.name}, choose a column:"
     column_input = gets.chomp.upcase
 
-    until ['1', '2', '3', 'GOOD GAME', 'EXIT'].include?(column_input)
-      puts "#{@current_player.name}, choose a valid column:"
-      column_input = gets.chomp.upcase
-    end
+    # until ['1', '2', '3', 'GOOD GAME', 'EXIT'].include?(column_input)
+    #   puts "#{@current_player.name}, choose a valid column:"
+    #   column_input = gets.chomp.upcase
+    # end
 
     if column_input == 'GOOD GAME'
       congratulate_winner
@@ -79,7 +79,12 @@ class Game
     @board.place_game_piece(@current_player.game_piece, row, column)
 
     if @board.grid[row][column] == @current_player.game_piece
-      switch_player
+      if @board.winner?(@current_player.game_piece)
+        puts "#{@current_player.name} wins! Congratulations!"
+        reset_game
+      else
+        switch_player
+      end
     end
   end
 
