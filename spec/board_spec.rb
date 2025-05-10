@@ -32,4 +32,15 @@ RSpec.describe Board do
       expect(result).to eq("O")
     end
   end
+
+  describe "winner?" do
+    it 'identifies a winner' do
+      board = Board.new
+      board.place_game_piece("X", 0, 0)
+      board.place_game_piece("X", 1, 0)
+      board.place_game_piece("X", 2, 0)
+
+      expect(board.winner?("X")).to eq(true)
+    end
+  end
 end

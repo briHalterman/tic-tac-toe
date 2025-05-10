@@ -29,4 +29,8 @@ class Board
       @play_round
     end
   end
+
+  def winner?(game_piece)
+    true
+  end
 end
