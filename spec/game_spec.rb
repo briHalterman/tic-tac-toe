@@ -16,4 +16,15 @@ RSpec.describe Game do
       expect { game.play_round }.to output(/choose a valid row/).to_stdout
     end
   end
+
+  describe '#place_game_piece' do
+    it 'does not overwrite a taken space' do
+      board = Board.new
+      board.place_game_piece("X", 1, 1)
+
+      board.place_game_piece("O", 1, 1)
+
+      expect(board.grid[1][1]).to eq("X")
+    end
+  end
 end
