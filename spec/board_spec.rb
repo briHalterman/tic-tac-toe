@@ -62,11 +62,11 @@ RSpec.describe Board do
 
     it 'identifies a win in row 1' do
       board = Board.new
-      board.place_game_piece("X", 1, 0)
-      board.place_game_piece("X", 1, 1)
-      board.place_game_piece("X", 1, 2)
+      board.place_game_piece("O", 1, 0)
+      board.place_game_piece("O", 1, 1)
+      board.place_game_piece("O", 1, 2)
 
-      expect(board.winner?("X")).to eq(true)
+      expect(board.winner?("O")).to eq(true)
     end
 
       it 'identifies a win in row 2' do
@@ -80,11 +80,11 @@ RSpec.describe Board do
 
     it 'identifies a win in column 0' do
       board = Board.new
-      board.place_game_piece("X", 0, 0)
-      board.place_game_piece("X", 1, 0)
-      board.place_game_piece("X", 2, 0)
+      board.place_game_piece("O", 0, 0)
+      board.place_game_piece("O", 1, 0)
+      board.place_game_piece("O", 2, 0)
 
-      expect(board.winner?("X")).to eq(true)
+      expect(board.winner?("O")).to eq(true)
     end
 
     it 'identifies a win in column 1' do
@@ -98,8 +98,17 @@ RSpec.describe Board do
 
     it 'identifies a win in column 2' do
       board = Board.new
-      board.place_game_piece("X", 0, 2)
-      board.place_game_piece("X", 1, 2)
+      board.place_game_piece("O", 0, 2)
+      board.place_game_piece("O", 1, 2)
+      board.place_game_piece("O", 2, 2)
+
+      expect(board.winner?("O")).to eq(true)
+    end
+
+    it 'identifies a diagonal win' do
+      board = Board.new
+      board.place_game_piece("X", 0, 0)
+      board.place_game_piece("X", 1, 1)
       board.place_game_piece("X", 2, 2)
 
       expect(board.winner?("X")).to eq(true)
