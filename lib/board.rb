@@ -41,6 +41,11 @@ class Board
                     grid[1][1] == game_piece &&
                     grid[1][2] == game_piece
 
+    # horizontal win in column 2
+    return true if  grid[2][0] == game_piece &&
+                    grid[2][1] == game_piece &&
+                    grid[2][2] == game_piece
+
     # vertical win in row 0
     return true if  grid[0][0] == game_piece &&
                     grid[1][0] == game_piece &&
