@@ -16,13 +16,17 @@ class Game
     puts
   end
 
+  def get_input
+    gets.chomp.upcase
+  end
+
   def switch_player
     @current_player = @current_player == @player1 ? @player2 : @player1
   end
 
   def reset_game
     puts "Would you like to play again? Y/N"
-    response = gets.chomp.upcase
+    response = get_input
 
     if response == "Y"
       Game.new.play_game
@@ -44,7 +48,7 @@ class Game
     row_input = nil
     loop do
       puts "#{@current_player.name}, choose a row:"
-      row_input = gets.chomp.upcase
+      row_input = get_input
 
       case row_input
       when 'GOOD GAME'
@@ -64,7 +68,7 @@ class Game
     column_input = nil
     loop do
       puts "#{@current_player.name}, choose a column:"
-      column_input = gets.chomp.upcase
+      column_input = get_input
 
       case column_input
       when 'GOOD GAME'
