@@ -33,26 +33,13 @@ class Game
   end
 
   def congratulate_winner
-    # switch_player
-    puts @board.display_board
+    @board.display_board
     puts "Congratulations, #{@current_player.name}!"
     reset_game
   end
 
   def play_round
-    puts @board.display_board
-
-
-    # until ['A', 'B', 'C', 'GOOD GAME', 'EXIT'].include?(row_input)
-    #   row_input = gets.chomp.upcase
-    # end
-
-    # if row_input == 'GOOD GAME'
-    #   congratulate_winner
-    # end
-
-    # if row_input == 'EXIT'
-    # end
+    @board.display_board
 
     row_input = nil
     loop do
@@ -69,7 +56,7 @@ class Game
       when 'A', 'B', 'C'
         break
       else
-        puts @board.display_board
+        @board.display_board
         puts "#{@current_player.name}, choose a valid row:"
       end
     end
@@ -89,7 +76,7 @@ class Game
       when '1', '2', '3'
         break
       else
-        puts @board.display_board
+        @board.display_board
         puts "#{@current_player.name}, choose a valid column:"
       end
     end
@@ -115,7 +102,7 @@ class Game
       end
     end
 
-    puts @board.display_board
+    @board.display_board
     puts 'Cat\'s Game!'
     reset_game
   end
