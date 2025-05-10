@@ -59,5 +59,14 @@ RSpec.describe Board do
 
       expect(board.winner?("X")).to eq(true)
     end
+
+    it 'identifies a win in row 1' do
+      board = Board.new
+      board.place_game_piece("X", 1, 0)
+      board.place_game_piece("X", 1, 1)
+      board.place_game_piece("X", 1, 2)
+
+      expect(board.winner?("X")).to eq(true)
+    end
   end
 end
