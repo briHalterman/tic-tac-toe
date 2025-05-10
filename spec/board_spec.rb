@@ -116,9 +116,22 @@ RSpec.describe Board do
 
     it 'identifies a diagonal win' do
       board = Board.new
+      board.place_game_piece("O", 0, 2)
+      board.place_game_piece("O", 1, 1)
+      board.place_game_piece("O", 2, 0)
+
+      expect(board.winner?("O")).to eq(true)
+    end
+
+      it 'identifies a winner on a mixed board' do
+      board = Board.new
+      board.place_game_piece("X", 0, 0)
+      board.place_game_piece("O", 2, 2)
       board.place_game_piece("X", 0, 2)
-      board.place_game_piece("X", 1, 1)
+      board.place_game_piece("O", 0, 1)
       board.place_game_piece("X", 2, 0)
+      board.place_game_piece("O", 0, 0)
+      board.place_game_piece("X", 1, 0)
 
       expect(board.winner?("X")).to eq(true)
     end

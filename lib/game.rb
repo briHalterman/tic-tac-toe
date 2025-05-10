@@ -80,6 +80,7 @@ class Game
 
     if @board.grid[row][column] == @current_player.game_piece
       if @board.winner?(@current_player.game_piece)
+        puts @board.display_board
         puts "#{@current_player.name} wins! Congratulations!"
         reset_game
       else
