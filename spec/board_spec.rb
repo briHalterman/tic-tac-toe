@@ -51,6 +51,15 @@ RSpec.describe Board do
       expect(board.winner?("O")).to eq(false)
     end
 
+    it 'does not identify a non-winner' do
+      board = Board.new
+      board.place_game_piece("O", 0, 0)
+      board.place_game_piece("O", 1, 0)
+      board.place_game_piece("X", 2, 0)
+
+      expect(board.winner?("O")).to eq(false)
+    end
+
     it 'identifies a win in row 0' do
       board = Board.new
       board.place_game_piece("X", 0, 0)
