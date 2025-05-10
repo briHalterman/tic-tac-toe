@@ -93,7 +93,14 @@ class Game
     show_instructions
     9.times do
       play_round
+      if @board.winner?(@current_player.game_piece)
+        puts @board.display_board
+        puts "#{@current_player.name} wins! Congratulations!"
+        return reset_game
+      end
     end
+
+    puts @board.display_board
     puts 'Cat\'s Game!'
     reset_game
   end
