@@ -33,7 +33,8 @@ class Game
   end
 
   def congratulate_winner
-    switch_player
+    # switch_player
+    puts @board.display_board
     puts "Congratulations, #{@current_player.name}!"
     reset_game
   end
@@ -41,38 +42,56 @@ class Game
   def play_round
     puts @board.display_board
 
-    puts "#{@current_player.name}, choose a row:"
-    row_input = gets.chomp.upcase
 
     # until ['A', 'B', 'C', 'GOOD GAME', 'EXIT'].include?(row_input)
-    #   puts "#{@current_player.name}, choose a valid row:"
     #   row_input = gets.chomp.upcase
     # end
 
-    if row_input == 'GOOD GAME'
-      congratulate_winner
-    end
-
-    if row_input == 'EXIT'
-      puts "Thanks for playing!"
-      exit
-    end
-
-    puts "#{@current_player.name}, choose a column:"
-    column_input = gets.chomp.upcase
-
-    # until ['1', '2', '3', 'GOOD GAME', 'EXIT'].include?(column_input)
-    #   puts "#{@current_player.name}, choose a valid column:"
-    #   column_input = gets.chomp.upcase
+    # if row_input == 'GOOD GAME'
+    #   congratulate_winner
     # end
 
-    if column_input == 'GOOD GAME'
-      congratulate_winner
+    # if row_input == 'EXIT'
+    # end
+
+    row_input = nil
+    loop do
+      puts "#{@current_player.name}, choose a row:"
+      row_input = gets.chomp.upcase
+
+      case row_input
+      when 'GOOD GAME'
+        switch_player
+        return congratulate_winner
+      when 'EXIT'
+        puts "Thanks for playing!"
+        exit
+      when 'A', 'B', 'C'
+        break
+      else
+        puts @board.display_board
+        puts "#{@current_player.name}, choose a valid row:"
+      end
     end
 
-    if column_input == 'EXIT'
-      puts "Thanks for playing!"
-      exit
+    column_input = nil
+    loop do
+      puts "#{@current_player.name}, choose a column:"
+      column_input = gets.chomp.upcase
+
+      case column_input
+      when 'GOOD GAME'
+        switch_player
+        return congratulate_winner
+      when 'EXIT'
+        puts "Thanks for playing!"
+        exit
+      when '1', '2', '3'
+        break
+      else
+        puts @board.display_board
+        puts "#{@current_player.name}, choose a valid column:"
+      end
     end
 
     row, column = Board.convert_coordinates_to_indices(row_input, column_input)
@@ -80,9 +99,7 @@ class Game
 
     if @board.grid[row][column] == @current_player.game_piece
       if @board.winner?(@current_player.game_piece)
-        puts @board.display_board
-        puts "#{@current_player.name} wins! Congratulations!"
-        reset_game
+        congratulate_winner
       else
         switch_player
       end
@@ -94,9 +111,7 @@ class Game
     9.times do
       play_round
       if @board.winner?(@current_player.game_piece)
-        puts @board.display_board
-        puts "#{@current_player.name} wins! Congratulations!"
-        return reset_game
+        congratulate_winner
       end
     end
 
