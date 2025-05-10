@@ -31,6 +31,8 @@ class Board
   end
 
   def winner?(game_piece)
-    true
+    grid[0][0] == game_piece &&
+    grid[1][0] == game_piece &&
+    grid[2][0] == game_piece
   end
 end
